@@ -49,7 +49,7 @@ class JobsController < ApplicationController
   def update_multiple
     @jobs = Job.find(params[:job_ids])
     @jobs.reject! do | job |
-      job.update_attributes(params[:job].reject { |k,v| v.blank? })
+      job.update_attributes!(job_params.reject { |k,v| v.blank? })
     end
     if @jobs.empty?
       redirect_to jobs_url
