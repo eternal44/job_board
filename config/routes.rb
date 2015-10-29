@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'static_pages/home'
 
   devise_for :users
+
+  resources :users, only: [:index]
   resources :jobs do
     collection do
       get :edit_multiple

@@ -3,7 +3,11 @@ class JobsController < ApplicationController
   # before_action :authenticate_user!
 
   def index
-    @q = current_user.jobs.ransack(params[:q])
+    if current_user.role == 'Admin'
+      @q = Job.all.ransack(params[:q])
+    else
+      @q = current_user.jobs.ransack(params[:q])
+    end
     @jobs = @q.result(distinct: true).includes(:user)
   end
 
@@ -49,7 +53,7 @@ class JobsController < ApplicationController
   def update_multiple
     @jobs = Job.find(params[:job_ids])
     @jobs.reject! do | job |
-      job.update_attributes(params[:job].reject { |k,v| v.blank? })
+      job.update_attributes!(job_params.reject { |k,v| v.blank? })
     end
     if @jobs.empty?
       redirect_to jobs_url

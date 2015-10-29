@@ -18,6 +18,14 @@
   <% end %>
   </br>
 
+  <% if current_user.role == 'Admin' %>
+  <button type="button" id="check_all">
+    Check / Uncheck All
+  </button>
+  <script type='text/javascript'>
+$('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
+  </script>
+<% end %>
   <%= form_tag edit_multiple_jobs_path, method: :get do %>
     <table class="table table-bordered table-condensed table-striped">
       <thead>
