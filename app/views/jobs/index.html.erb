@@ -18,7 +18,7 @@
   <% end %>
   </br>
 
-  <%= form_tag approve_jobs_path, method: :put do %>
+  <%= form_tag edit_multiple_jobs_path, method: :get do %>
     <table class="table table-bordered table-condensed table-striped">
       <thead>
         <tr>
@@ -54,7 +54,7 @@
       </tbody>
     </table>
     <% if current_user.role == 'Admin' %>
-      <%= submit_tag "Approve Checked" %>
+      <%= submit_tag "Edit Checked" %>
     <% end %>
   <% end %>
   <div class="span8">

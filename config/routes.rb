@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :jobs do
     collection do
-      put :approve
+      get :edit_multiple
+      put :update_multiple
     end
     resources :comments, module: :jobs
   end
