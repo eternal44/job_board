@@ -42,14 +42,26 @@ class JobsController < ApplicationController
     redirect_to jobs_path
   end
 
-  def approve
-    Job.where(id: params[:job_ids]).update_all( status: 'Approved' )
-    redirect_to jobs_url
+  def edit_multiple
+    @jobs = Job.find(params[:job_ids])
+  end
+
+  def update_multiple
+    @jobs = Job.find(params[:job_ids])
+    @jobs.reject! do | job |
+      job.update_attributes!(job_params.reject { |k,v| v.blank? })
+    end
+    if @jobs.empty?
+      redirect_to jobs_url
+    else
+      @job = Job.new(params[:job])
+      render "edit_multiple"
+    end
   end
 
   private
   def job_params
-    params.require(:job).permit(:title, :location, :start_time, :end_time,
+    params.require(:job).permit(:job, :title, :location, :start_time, :end_time,
                                 :user_id, :status)
   end
 
