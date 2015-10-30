@@ -6,6 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create(email: "admin@gmail.com",
+            role: "Admin",
+            password: "password",
+            password_confirmation: "password")
+
 User.create(email: "jamesyoun710@gmail.com",
             role: "Employer",
             password: "gooneen44",
@@ -34,15 +39,22 @@ Profile.all.each do |profile|
   profile.update(name: name)
 end
 
+job_type = ['cleaning', 'building', 'repairing']
+job_type.each do |job|
+  JobType.create(job_type: job)
+end
+
 users = User.where('id < 4')
 10.times do
-  title = Faker::Book.title
   location = Faker::Address.street_address
-  start_time = Faker::Time.between(DateTime.now + 20, DateTime.now)
-  end_time = start_time + 1
-  users.each { |user| user.jobs.create!(title: title,
-                                        location: location,
-                                        start_time: start_time,
-                                        end_time: end_time,
-                                        status: 'Pending') }
+  first_start_time_choice = Faker::Time.between(DateTime.now + 20, DateTime.now)
+  second_start_time_choice = first_start_time_choice + 1
+  users.each { |user| user.jobs.create!(location: location,
+                                        first_start_time_choice: first_start_time_choice,
+                                        second_start_time_choice: second_start_time_choice,
+                                        status: 'Created') }
+  job_type = JobType.find(rand(1..3))
+  Job.last.job_types << job_type
+  Job.last.save
+
 end
