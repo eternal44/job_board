@@ -16,8 +16,8 @@
 class Job < ActiveRecord::Base
   belongs_to :user
   has_many :comments, as: :commentable
+  has_and_belongs_to_many :job_types
 
-  validates :title, presence: true
   validates :location, presence: true
   validates :first_start_time_choice, presence: true
   validates :user_id, presence: true

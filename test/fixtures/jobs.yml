@@ -16,7 +16,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: 'MyString'
   location: 'MyString'
   first_start_time_choice: 2015-10-15 14:58:38
   second_start_time_choice: 2015-10-15 14:58:38
@@ -24,7 +23,6 @@ one:
   status: 'Created'
 
 two:
-  title: 'Second Job'
   location: 'Second Location'
   first_start_time_choice: 2015-10-15 14:58:38
   second_start_time_choice: 2015-10-15 14:58:38
