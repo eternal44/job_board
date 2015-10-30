@@ -8,7 +8,7 @@ class JobsControllerTest < ActionController::TestCase
 
   test 'should show job' do
     get :show, id: @valid_job
-    assert_equal("MyString", @valid_job.title)
+    assert_equal("MyString", @valid_job.location)
   end
 
   test 'should get index' do
