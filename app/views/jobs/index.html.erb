@@ -42,7 +42,7 @@
                 <td><%= check_box_tag "job_ids[]", job.id %></td>
               <% end %>
               <td><%= link_to job.job_types.map(&:job_type).sort.join(", "), job %></td>
-              <td><%= link_to job.user.profile.try(:name)%></td>
+              <td><%= job.user.profile.try(:name)%></td>
               <td><%= job.location %>
               <td><%= job.first_start_time_choice %>
               <td><%= job.status %></td>

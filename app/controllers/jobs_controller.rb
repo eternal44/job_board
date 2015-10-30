@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   # before_action :authenticate_user!
 
   def index
-    @q = Job.ransack(params[:q])
+    @q = current_user.jobs.ransack(params[:q])
     @jobs = @q.result(distinct: true).includes(:user)
   end
 

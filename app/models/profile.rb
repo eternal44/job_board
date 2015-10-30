@@ -23,4 +23,8 @@ class Profile < ActiveRecord::Base
       return 0
     end
   end
+
+  def total
+    self.get_downvotes.size + self.get_upvotes.size
+  end
 end
