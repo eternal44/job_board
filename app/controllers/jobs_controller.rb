@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
     @q = Job.ransack(params[:q])
@@ -54,7 +54,8 @@ class JobsController < ApplicationController
                                 :first_start_time_choice,
                                 :second_start_time_choice,
                                 :user_id,
-                                :status)
+                                :status,
+                                job_type_ids:[])
   end
 
   def set_job

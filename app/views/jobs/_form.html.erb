@@ -13,7 +13,13 @@
     <div class="row">
       <div class='form-group col-sm-6'>
         <%= form.label :title %><br>
-        <%= form.text_field :title, class: 'form-control', size: 57 %>
+        <%# <%= form.text_field :title, class: 'form-control', size: 57 %1> %>
+        <%= form.collection_check_boxes :job_type_ids, JobType.all, :id, :job_type do |b| %>
+          <div class="collection-check-box">
+            <%= b.check_box %>
+            <%= b.label %>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="row">
