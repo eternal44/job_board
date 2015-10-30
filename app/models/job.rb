@@ -2,15 +2,15 @@
 #
 # Table name: jobs
 #
-#  id         :integer          not null, primary key
-#  title      :string
-#  location   :string
-#  start      :text
-#  end        :text
-#  user_id    :integer
-#  status     :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                       :integer          not null, primary key
+#  title                    :string
+#  location                 :string
+#  first_start_time_choice  :text
+#  second_start_time_choice :text
+#  user_id                  :integer
+#  status                   :string
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
 #
 
 class Job < ActiveRecord::Base
@@ -19,8 +19,7 @@ class Job < ActiveRecord::Base
 
   validates :title, presence: true
   validates :location, presence: true
-  validates :start_time, presence: true
-  validates :end_time, presence: true
+  validates :first_start_time_choice, presence: true
   validates :status, presence: true
   validates :user_id, presence: true
 
