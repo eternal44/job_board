@@ -25,7 +25,7 @@ class JobTest < ActiveSupport::TestCase
   end
 
   test "employer id should be present" do
-    @valid_job.employer_id = nil
+    @valid_job.user_id = nil
     assert_not @valid_job.valid?
   end
 
