@@ -20,7 +20,7 @@ class Job < ActiveRecord::Base
   validates :title, presence: true
   validates :location, presence: true
   validates :first_start_time_choice, presence: true
-  validates :status, presence: true
   validates :user_id, presence: true
+  validates :status, presence: true
 
 end
