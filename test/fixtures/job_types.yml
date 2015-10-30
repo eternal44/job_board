@@ -1,7 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   type: 
+one:
+  job_type: cleaning
 
-# two:
-#   type: 
+two:
+  job_type: building
+
+three:
+  job_type: repairing
+
+four:
+  job_type: demolishing
+
+
