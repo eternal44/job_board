@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @q = Job.ransack(params[:q])
@@ -49,8 +49,12 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:title, :location, :start_time, :end_time,
-                                :user_id, :status)
+    params.require(:job).permit(:title,
+                                :location,
+                                :first_start_time_choice,
+                                :second_start_time_choice,
+                                :user_id,
+                                :status)
   end
 
   def set_job

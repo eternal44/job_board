@@ -26,8 +26,8 @@
       <th>Job Title </th>
       <th>Status</th>
       <th>Location</th>
-      <th>Start Time</th>
-      <th>End Time</th>
+      <th>First Start Time Choice</th>
+      <th>Second Start Time Choice</th>
     </tr>
   </thead>
   <% @profile.user.jobs.each do |job| %>
@@ -35,8 +35,8 @@
       <td><%= job.title %></td>
       <td><%= job.status %></td>
       <td><%= job.location %></td>
-      <td><%= job.start_time %></td>
-      <td><%= job.end_time %></td>
+      <td><%= job.first_start_time_choice %></td>
+      <td><%= job.second_start_time_choice %></td>
     </tbody>
   <% end %>
 </table>
