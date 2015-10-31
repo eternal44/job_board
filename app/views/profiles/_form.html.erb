@@ -1,8 +1,13 @@
 <%= form_for @profile do |f| %>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div></br>
+    <%= f.text_field :name %><br>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %><br>
+  </div>
 
   </br>
 
