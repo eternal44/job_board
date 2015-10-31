@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   # user logged-in root
   authenticated :user do
-    root to: "users#index", as: :authenticated_user_root, via: :get
+    root to: "jobs#index", as: :authenticated_user_root, via: :get
   end
 
   # visitors root

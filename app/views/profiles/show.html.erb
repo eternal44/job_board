@@ -3,6 +3,7 @@
 <% end %>
 <%= link_to 'Back', :back %>
 <h2><%= @profile.name %></h2>
+<h3>Phone number: <%= number_to_phone(@profile.phone_number) %></h3>
 <h4><%= number_to_percentage(@profile.score, precision: 0) %></h4> <br>
 
 <%= link_to like_profile_path(@profile), method: :put do %>
@@ -23,7 +24,7 @@
 <table class="table table-bordered table-condensed table-striped">
   <thead>
     <tr>
-      <th>Job Title </th>
+      <th>Job Type </th>
       <th>Status</th>
       <th>Location</th>
       <th>First Start Time Choice</th>
@@ -32,7 +33,7 @@
   </thead>
   <% @profile.user.jobs.each do |job| %>
     <tbody>
-      <td><%= job.title %></td>
+      <td><%= job.job_types.map(&:job_type).sort.join(', ') %></td>
       <td><%= job.status %></td>
       <td><%= job.location %></td>
       <td><%= job.first_start_time_choice %></td>
