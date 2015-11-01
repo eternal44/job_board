@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :edit, :update]
   resources :jobs do
     collection do
       get :edit_multiple
@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       put "dislike", to: "profiles#downvote"
     end
   end
+
+  resources :admin_dashboards
 
   # user logged-in root
   authenticated :user do
