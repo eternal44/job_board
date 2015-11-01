@@ -2,8 +2,8 @@
   <thead>
     <tr>
       <th>Profile</th>
-      <th>Job Count</th>
       <th>Role</th>
+      <th>Job Count</th>
       <th>Rating</th>
     </tr>
   </thead>
@@ -13,8 +13,8 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= link_to user.profile.try(:name), profile_path(user.profile.id) %></td>
-          <td><%= user.jobs.count %></td>
           <td><%= user.role %></td>
+          <td><%= user.jobs.count %></td>
           <td><%= user.profile.score %>% of <%= user.profile.total %> votes</td>
           <td><%= link_to "Edit", edit_user_path(user) %></td>
         </tr>
