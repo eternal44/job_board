@@ -9,7 +9,7 @@
             <% end %>
           </ul>
       </div>
-    <% end %>
+    <% end %><!-- Job error messages -->
     <div class="row">
       <div class='form-group col-sm-6'>
         <%= form.label :title %><br>
@@ -20,7 +20,7 @@
           </div>
         <% end %>
       </div>
-    </div>
+    </div><!-- Job Type -->
     <div class="row">
       <div class='form-group col-sm-6'>
         <%= form.label :location %>
@@ -45,7 +45,7 @@ $(function () {
 });
           </script>
         </div>
-      </div>
+      </div><!-- first_start_time_choice -->
     <div class="row">
       <div class="form-group col-sm-6">
         <div class='input-group datetimepicker9'>
@@ -64,8 +64,13 @@ $(function () {
 });
         </script>
       </div>
-
-    </div>
+    </div><!-- second_start_time_choice -->
+    <% if current_user.role == 'Admin' || current_user.role == 'Attendant' %>
+      <div class="row">
+        <%= form.label :status %><br>
+        <%= form.select :status, [['Pending'],['Approved'],['Open'],['Finished'],['Closed']] %>
+      </div><br><!-- Job Status -->
+    <% end %>
     <div class='action'>
       <%= form.submit class: 'btn btn-primary' %>
     </div>
