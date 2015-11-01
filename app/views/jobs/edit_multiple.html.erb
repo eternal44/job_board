@@ -11,10 +11,9 @@
         </tr>
       </thead>
 
-      <tbody>    <% @jobs.each do |job| %>
-        <%= hidden_field_tag "job_ids[]", job.id %>
-
-
+      <tbody>
+        <% @jobs.each do |job| %>
+          <%= hidden_field_tag "job_ids[]", job.id %>
             <tr>
               <td><%= link_to job.job_types.map(&:job_type).sort.join(", "), job %></td>
               <td><%= job.user.profile.try(:name)%></td>
@@ -38,7 +37,7 @@
   <%= fields_for :job do |f| %>
     <div class="field">
       <%= f.label :change_status %>
-      <%= f.select :status, [['Approved'],['Pending'],['Open'],['Closed'],['Finished']] %>
+      <%= f.select :status, [['Pending'],['Approved'],['Open'],['Finished'],['Closed']] %>
     </div>
   <% end %>
   <div class="actions">
