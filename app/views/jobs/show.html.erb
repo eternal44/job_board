@@ -15,7 +15,7 @@
     <%= @job.created_at %></br>
 
     <strong>Employer</strong>
-    <%= @job.user.profile %></br>
+    <%= @job.user.profile.name %></br>
 
     <strong>Employer Email</strong>
     <%= @job.user.email %></br>
@@ -49,11 +49,18 @@
     <strong>Price per Worker</strong>
     <%= @job.price_per_worker %></br>
 
-    <strong>Minimum Job Estimate</strong>
-    $<%= @job.min_hours * @job.number_of_workers %></br>
+    <strong>Minimum Job Estimate</strong></br>
+    <% if @job.estimate_params_present? %>
+      $<%= @job.minimum_price_estimate %></br>
+    <% end %>
 
-    <strong>Maximum Job Estimate</strong>
-    $ <%= @job.max_hours * @job.number_of_workers %></br>
+    <strong>Maximum Job Estimate</strong></br>
+    <% if @job.estimate_params_present? %>
+      $<%= @job.maximum_price_estimate%></br>
+    <% end %>
+
+    <strong>Location</strong>
+    <%= @job.location %></br>
 
     <iframe
      width="600"
