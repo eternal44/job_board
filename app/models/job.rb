@@ -29,4 +29,16 @@ class Job < ActiveRecord::Base
   validates :user_id, presence: true
   validates :status, presence: true
 
+  def minimum_price_estimate
+    self.min_hours * self.number_of_workers * self.price_per_worker
+  end
+
+  def maximum_price_estimate
+    self.max_hours * self.number_of_workers * self.price_per_worker
+  end
+
+  def estimate_params_present?
+    self.max_hours.present? && self.number_of_workers.present? && self.price_per_worker.present?
+  end
+
 end
