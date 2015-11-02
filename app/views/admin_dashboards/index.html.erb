@@ -1,3 +1,16 @@
+= search_form_for @search, url: my_results_url do |f|
+
+<div class="row pull-right">
+  <%= search_form_for @q, url: admin_dashboards_path  do |f| %>
+    <%= f.label :status_or_location_cont %>
+    <%= f.search_field :status_or_location_cont, placeholder: "Search jobs", class: "form-control vertical-align: middle", style: "top-padding: 10px; margin-left: 10px"%></br>
+
+    <%= f.label :employer_name_cont %>
+    <%= f.search_field :user_profile_name_cont, placeholder: "Search employers", class: "form-control vertical-align: middle", style: "top-padding: 10px; margin-left: 10px" %></br>
+    <%= f.submit "Search", class: "btn btn-primary", style: "top-padding: 10px; margin-left: 10px" %>
+  <% end %>
+</div>
+
 <h3>Pending Jobs</h3>
 <%= render partial: "jobs/table_row", locals: {job_variable: @jobs_pending} %>
 
