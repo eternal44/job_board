@@ -9,17 +9,11 @@
   <% end %>
 </div>
 
-<h3>Pending Jobs</h3>
-<%= render partial: "jobs/table_row", locals: {job_variable: @jobs_pending} %>
+<h3>Unconfirmed Jobs</h3>
+<%= render partial: "jobs/table_row", locals: {job_variable: @jobs_unconfirmed} %>
 
-<h3>Approved Jobs</h3>
-<%= render partial: "jobs/table_row", locals: {job_variable: @jobs_approved} %>
+<h3>Confirmed Jobs</h3>
+<%= render partial: "jobs/table_row", locals: {job_variable: @jobs_confirmed} %>
 
-<h3>Open Jobs</h3>
-<%= render partial: "jobs/table_row", locals: {job_variable: @jobs_open} %>
-
-<h3>Finished Jobs</h3>
-<%= render partial: "jobs/table_row", locals: {job_variable: @jobs_finished} %>
-
-<h3>Closed Jobs</h3>
-<%= render partial: "jobs/table_row", locals: {job_variable: @jobs_closed} %>
+<h3>Dispatched Jobs</h3>
+<%= render partial: "jobs/table_row", locals: {job_variable: @jobs_dispatched} %>

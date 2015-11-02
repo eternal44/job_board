@@ -21,7 +21,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.user = current_user
-    @job.status = 'Created'
+    @job.status = 'Unconfirmed'
 
     if @job.save
       redirect_to :back
@@ -35,7 +35,7 @@ class JobsController < ApplicationController
 
   def update
     if @job.update(job_params)
-      redirect_to request.referer
+      redirect_to @job
     else
       render action: :edit
     end
@@ -65,13 +65,18 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:title,
+    params.require(:job).permit(:subject,
                                 :location,
-                                :first_start_time_choice,
-                                :second_start_time_choice,
+                                :appointment_date_time,
                                 :user_id,
-                                :attendant_id,
                                 :status,
+                                :attendant_id,
+                                :priority,
+                                :overdue,
+                                :number_of_workers,
+                                :min_hours,
+                                :max_hours,
+                                :price_per_worker,
                                 job_type_ids:[])
   end
 

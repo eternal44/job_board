@@ -2,15 +2,21 @@
 #
 # Table name: jobs
 #
-#  id                       :integer          not null, primary key
-#  title                    :string
-#  location                 :string
-#  first_start_time_choice  :text
-#  second_start_time_choice :text
-#  user_id                  :integer
-#  status                   :string
-#  created_at               :datetime         not null
-#  updated_at               :datetime         not null
+#  id                    :integer          not null, primary key
+#  subject               :string
+#  location              :string
+#  appointment_date_time :text
+#  user_id               :integer
+#  status                :string
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  attendant_id          :integer
+#  priority              :string
+#  overdue               :boolean          default(FALSE)
+#  number_of_workers     :integer
+#  min_hours             :integer
+#  max_hours             :integer
+#  price_per_worker      :decimal(, )
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
