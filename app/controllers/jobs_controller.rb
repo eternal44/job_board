@@ -21,7 +21,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.user = current_user
-    @job.status = 'UNCONFIRMED'
+    @job.status = 'Unconfirmed'
 
     if @job.save
       redirect_to :back

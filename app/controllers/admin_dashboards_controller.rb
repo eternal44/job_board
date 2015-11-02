@@ -8,11 +8,9 @@ class AdminDashboardsController < ApplicationController
       redirect_to root_url
     end
       # extract to model later
-      @jobs_pending = @q.result.includes(:user).where(status: 'Pending')
-      @jobs_approved = @q.result.includes(:user).where(status: 'Approved')
-      @jobs_open = @q.result.includes(:user).where(status: 'Open')
-      @jobs_finished = @q.result.includes(:user).where(status: 'Finished')
-      @jobs_closed = @q.result.includes(:user).where(status: 'Closed')
+      @jobs_unconfirmed = @q.result.includes(:user).where(status: 'Unconfirmed')
+      @jobs_confirmed = @q.result.includes(:user).where(status: 'Confirmed')
+      @jobs_dispatched = @q.result.includes(:user).where(status: 'Dispatched')
       @jobs = Job.all
   end
 end
