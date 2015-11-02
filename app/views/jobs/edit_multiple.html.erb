@@ -39,6 +39,13 @@
       <%= f.label :change_status %>
       <%= f.select :status, [['Pending'],['Approved'],['Open'],['Finished'],['Closed']] %>
     </div>
+    <div class="field">
+      <%= f.select(:attendant_id) do %>
+        <% User.where(role: 'Attendant').each do |u| %>
+          <%= content_tag(:option, u.profile.name, value: u.id) %>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
   <div class="actions">
     <%= submit_tag "Update" %>

@@ -70,6 +70,7 @@ class JobsController < ApplicationController
                                 :first_start_time_choice,
                                 :second_start_time_choice,
                                 :user_id,
+                                :attendant_id,
                                 :status,
                                 job_type_ids:[])
   end
