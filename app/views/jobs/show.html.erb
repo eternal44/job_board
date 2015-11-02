@@ -5,14 +5,67 @@
   <h3>Job Details</h3>
 
   <div>
-    <strong>Job Title</strong>
-    <%= @job.title %></br>
+    <strong>Subject</strong>
+    <%= @job.subject %></br>
 
-    <strong>Location</strong>
-    <%= @job.location %></br>
+    <strong>Request ID</strong>
+    <%= @job.id %></br>
+
+    <strong>Job Crreated Date</strong>
+    <%= @job.created_at %></br>
+
+    <strong>Employer</strong>
+    <%= @job.user.profile %></br>
+
+    <strong>Employer Email</strong>
+    <%= @job.user.email %></br>
+
+    <strong>Priority</strong>
+    <%= @job.priority %></br>
+
+    <strong>Last Updated</strong>
+    <%= @job.updated_at %></br>
+
+    <strong>Overdue?</strong>
+    <%= @job.overdue %></br>
+
+    <strong>Attendant</strong>
+    <% if @job.attendant_id.present? %>
+      <%= User.find(@job.attendant_id) %></br>
+    <% end %>
+
+    <strong>Appointment</strong>
+    <%= @job.appointment_date_time %></br>
+
+    <strong>Number of Workers</strong>
+    <%= @job.number_of_workers %></br>
+
+    <strong>Minimum Estimated Hours</strong>
+    <%= @job.min_hours %></br>
+
+    <strong>Maximum Estimated Hours</strong>
+    <%= @job.max_hours %></br>
+
+    <strong>Price per Worker</strong>
+    <%= @job.price_per_worker %></br>
+
+    <strong>Minimum Job Estimate</strong>
+    $<%= @job.min_hours * @job.number_of_workers %></br>
+
+    <strong>Maximum Job Estimate</strong>
+    $ <%= @job.max_hours * @job.number_of_workers %></br>
+
+    <iframe
+     width="600"
+     height="450"
+     frameborder="0" style="border:0"
+                     src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB6L2bD2yB5pnV_emw7TpdGlhbXqJbITB4
+                     &q=<%= @job.location %>" allowfullscreen>
+
+    </iframe>
 
     </br>
   </div>
-<%= render partial: "comments/form", locals: {commentable: @job} %>
-<%= render partial: "comments/comments", locals: {commentable: @job} %>
+  <%= render partial: "comments/form", locals: {commentable: @job} %>
+  <%= render partial: "comments/comments", locals: {commentable: @job} %>
 </div>

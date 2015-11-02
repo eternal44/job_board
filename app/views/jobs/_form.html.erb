@@ -68,7 +68,7 @@ $(function () {
     <% if current_user.role == 'Admin' || current_user.role == 'Attendant' %>
       <div class="row">
         <%= form.label :status %><br>
-        <%= form.select :status, [['Pending'],['Approved'],['Open'],['Finished'],['Closed']] %>
+        <%= form.select :status, [['UNCONFIRMED'],['CONFIRMED'],['DISPATCHED']] %>
       </div><br><!-- Job Status -->
     <% end %>
     <div class='action'>

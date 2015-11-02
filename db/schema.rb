@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031212841) do
+ActiveRecord::Schema.define(version: 20151102192742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,15 +40,20 @@ ActiveRecord::Schema.define(version: 20151031212841) do
   add_index "job_types_jobs", ["job_type_id", "job_id"], name: "index_job_types_jobs_on_job_type_id_and_job_id", using: :btree
 
   create_table "jobs", force: :cascade do |t|
-    t.string   "title"
+    t.string   "subject"
     t.string   "location"
-    t.text     "first_start_time_choice"
-    t.text     "second_start_time_choice"
+    t.text     "appointment_date_time"
     t.integer  "user_id"
     t.string   "status"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "attendant_id"
+    t.string   "priority"
+    t.boolean  "overdue",               default: false
+    t.integer  "number_of_workers"
+    t.integer  "min_hours"
+    t.integer  "max_hours"
+    t.decimal  "price_per_worker"
   end
 
   add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
