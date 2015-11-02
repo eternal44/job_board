@@ -19,6 +19,7 @@ $('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
           <% if current_user.role == 'Admin' %>
             <th></th>
           <% end %>
+          <th>Job Subject</th>
           <th>Job Type</th>
           <th>Employer</th>
           <th>Location</th>
@@ -35,6 +36,7 @@ $('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
               <% if current_user.role == 'Admin' %>
                 <td><%= check_box_tag "job_ids[]", job.id %></td>
               <% end %>
+              <td><%= job.subject %>
               <td><%= link_to job.job_types.map(&:job_type).sort.join(", "), job %></td>
               <td><%= job.user.profile.try(:name)%></td>
               <td><%= job.location %>

@@ -19,7 +19,14 @@
     <% end %><!-- Job error messages -->
     <div class="row">
       <div class='form-group col-sm-6'>
-        <%= form.label :title %><br>
+        <%= form.label :subject %><br>
+        <%= form.text_field :subject %><br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class='form-group col-sm-6'>
+        <%= form.label :job_categories %>
         <%= form.collection_check_boxes :job_type_ids, JobType.all, :id, :job_type do |b| %>
           <div class="collection-check-box">
             <%= b.check_box %>

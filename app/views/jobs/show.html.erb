@@ -5,12 +5,17 @@
   <h3>Job Details</h3>
   <%= link_to 'Edit Job', edit_job_path(params[:id]) %>
 
-  <div>
+  <div class="row">
+    <div class="col-md-4">
     <strong>Subject</strong>
     <%= @job.subject %></br>
 
     <strong>Request ID</strong>
     <%= @job.id %></br>
+
+    <strong>Job Type / Categories</strong>
+    <%= @job.job_types.map(&:job_type).sort.join(", ") %></br>
+    <%# <td><%= link_to job.job_types.map(&:job_type).sort.join(", "), job %1></td> %>
 
     <strong>Job Crreated Date</strong>
     <%= @job.created_at %></br>
@@ -34,7 +39,9 @@
     <% if @job.attendant_id.present? %>
       <%= User.find(@job.attendant_id).profile.name %></br>
     <% end %>
+    </div><!-- col-md-4-->
 
+    <div class"col-md-4">
     <strong>Appointment</strong>
     <%= @job.appointment_date_time %></br>
 
@@ -60,8 +67,10 @@
       $<%= @job.maximum_price_estimate%></br>
     <% end %>
 
+    </br>
     <strong>Location</strong>
     <%= @job.location %></br>
+    </div><!-- col-md-4-->
 
     <iframe
      width="600"

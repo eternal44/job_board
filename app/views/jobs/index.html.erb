@@ -12,61 +12,6 @@
 
 <h1>Listing Jobs</h1>
 
-<div class="row-fluid">
-  <% if current_user.role == 'Employer' || current_user.role == 'Admin' %>
-    <%= link_to 'New job', new_job_path %></br>
-  <% end %>
-  </br>
+<%= render partial: "jobs/table_row", locals: {job_variable: @jobs} %>
 
-  <% if current_user.role == 'Admin' %>
-  <button type="button" id="check_all">
-    Check / Uncheck All
-  </button>
-  <script type='text/javascript'>
-$('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
-  </script>
-<% end %>
-  <%= form_tag edit_multiple_jobs_path, method: :get do %>
-    <table class="table table-bordered table-condensed table-striped">
-      <thead>
-        <tr>
-          <% if current_user.role == 'Admin' %>
-            <th></th>
-          <% end %>
-          <th>Job Type</th>
-          <th>Employer</th>
-          <th>Location</th>
-          <th>Time</th>
-          <th>Status</th>
-          <th>Attendant</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
 
-      <tbody>
-        <% if @jobs.present? %>
-          <% @jobs.each do |job| %>
-            <tr>
-              <% if current_user.role == 'Admin' %>
-                <td><%= check_box_tag "job_ids[]", job.id %></td>
-              <% end %>
-              <td><%= link_to job.job_types.map(&:job_type).sort.join(", "), job %></td>
-              <td><%= job.user.profile.try(:name)%></td>
-              <td><%= job.location %>
-              <td><%= job.appointment_date_time %>
-              <td><%= job.status %></td>
-              <td><%= job.attendant_id %></td>
-              <td><%= link_to "Edit", edit_job_path(job) %></td>
-              <td><%= link_to "Destroy", job_path(job), method: :delete, data: {confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        <% end %>
-      </tbody>
-    </table>
-    <% if current_user.role == 'Admin' %>
-      <%= submit_tag "Edit Checked" %>
-    <% end %>
-  <% end %>
-  <div class="span8">
-  </div>
-</div>
