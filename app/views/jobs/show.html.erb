@@ -3,6 +3,7 @@
 <div class="container">
   <hr />
   <h3>Job Details</h3>
+  <%= link_to 'Edit Job', edit_job_path(params[:id]) %>
 
   <div>
     <strong>Subject</strong>
@@ -31,7 +32,7 @@
 
     <strong>Attendant</strong>
     <% if @job.attendant_id.present? %>
-      <%= User.find(@job.attendant_id) %></br>
+      <%= User.find(@job.attendant_id).profile.name %></br>
     <% end %>
 
     <strong>Appointment</strong>

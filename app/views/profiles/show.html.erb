@@ -21,26 +21,7 @@
 <%= @profile.user.role %></br>
 
 <h3>Job History</h3>
-<table class="table table-bordered table-condensed table-striped">
-  <thead>
-    <tr>
-      <th>Job Type </th>
-      <th>Status</th>
-      <th>Location</th>
-      <th>First Start Time Choice</th>
-      <th>Second Start Time Choice</th>
-    </tr>
-  </thead>
-  <% @profile.user.jobs.each do |job| %>
-    <tbody>
-      <td><%= job.job_types.map(&:job_type).sort.join(', ') %></td>
-      <td><%= job.status %></td>
-      <td><%= job.location %></td>
-      <td><%= job.first_start_time_choice %></td>
-      <td><%= job.second_start_time_choice %></td>
-    </tbody>
-  <% end %>
-</table>
+<%= render partial: "jobs/table_row", locals: {job_variable: @profile.user.jobs} %>
 
 
 <%= render partial: "comments/form", locals: {commentable: @profile} %>

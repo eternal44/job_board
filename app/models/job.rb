@@ -25,7 +25,7 @@ class Job < ActiveRecord::Base
   has_and_belongs_to_many :job_types
 
   validates :location, presence: true
-  validates :first_start_time_choice, presence: true
+  validates :appointment_date_time, presence: true
   validates :user_id, presence: true
   validates :status, presence: true
 

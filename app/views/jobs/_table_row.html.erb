@@ -38,7 +38,7 @@ $('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
               <td><%= link_to job.job_types.map(&:job_type).sort.join(", "), job %></td>
               <td><%= job.user.profile.try(:name)%></td>
               <td><%= job.location %>
-              <td><%= job.first_start_time_choice %>
+              <td><%= job.appointment_date_time %>
               <td><%= job.status %></td>
               <% if job.attendant_id.present? %>
                 <td><%= Profile.find(job.attendant_id).try(:name) %></td>
