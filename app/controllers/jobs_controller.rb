@@ -3,12 +3,12 @@ class JobsController < ApplicationController
   # before_action :authenticate_user!
 
   def index
-    if current_user.role == 'Admin'
-      @q = Job.all.ransack(params[:q])
-    else
+    if current_user.role == 'Employer' || current_user.role == 'Worker'
       @q = current_user.jobs.ransack(params[:q])
+      @jobs = @q.result(distinct: true).includes(:user)
+    else
+      redirect_to admin_dashboards_path
     end
-    @jobs = @q.result(distinct: true).includes(:user)
   end
 
   def show
@@ -24,7 +24,7 @@ class JobsController < ApplicationController
     @job.status = 'Created'
 
     if @job.save
-      redirect_to jobs_path
+      redirect_to :back
     else
       render action: :new
     end
@@ -35,7 +35,7 @@ class JobsController < ApplicationController
 
   def update
     if @job.update(job_params)
-      redirect_to jobs_path
+      redirect_to request.referer
     else
       render action: :edit
     end
@@ -43,7 +43,7 @@ class JobsController < ApplicationController
 
   def destroy
     @job.destroy
-    redirect_to jobs_path
+    redirect_to :back
   end
 
   def edit_multiple
@@ -56,7 +56,7 @@ class JobsController < ApplicationController
       job.update_attributes!(job_params.reject { |k,v| v.blank? })
     end
     if @jobs.empty?
-      redirect_to jobs_url
+      redirect_to admin_dashboards_path
     else
       @job = Job.new(params[:job])
       render "edit_multiple"
@@ -70,6 +70,7 @@ class JobsController < ApplicationController
                                 :first_start_time_choice,
                                 :second_start_time_choice,
                                 :user_id,
+                                :attendant_id,
                                 :status,
                                 job_type_ids:[])
   end
