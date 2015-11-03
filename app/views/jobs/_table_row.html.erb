@@ -1,7 +1,62 @@
-<tr id="job <%= job.id %>">
-  <td><%= link_to job.title, job %></td>
-  <td><%= link_to job.user.profile.try(:name), profile_path(job.user.profile.id) %></td>
-  <td><%= link_to "Edit", edit_job_path(job) %></td>
-  <td><%= link_to "Destroy", job_path(job), method: :delete, data: {confirm: 'Are you sure?' } %></td>
-</tr>
+<div class="row-fluid">
+  <% if current_user.role == 'Employer' || current_user.role == 'Admin' %>
+    <%= link_to 'New job', new_job_path %></br>
+  <% end %>
+  </br>
 
+  <% if current_user.role == 'Admin' %>
+  <button type="button" id="check_all">
+    Check / Uncheck All
+  </button>
+  <script type='text/javascript'>
+$('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
+  </script>
+<% end %>
+  <%= form_tag edit_multiple_jobs_path, method: :get do %>
+    <table class="table table-bordered table-condensed table-striped">
+      <thead>
+        <tr>
+          <% if current_user.role == 'Admin' %>
+            <th></th>
+          <% end %>
+          <th>Job Subject</th>
+          <th>Job Type</th>
+          <th>Employer</th>
+          <th>Location</th>
+          <th>Time</th>
+          <th>Status</th>
+          <th>Attendant</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <% job_variable.each do |job| %>
+            <tr>
+              <% if current_user.role == 'Admin' %>
+                <td><%= check_box_tag "job_ids[]", job.id %></td>
+              <% end %>
+              <td><%= job.subject %>
+              <td><%= link_to job.job_types.map(&:job_type).sort.join(", "), job %></td>
+              <td><%= job.user.profile.try(:name)%></td>
+              <td><%= job.location %>
+              <td><%= job.appointment_date_time %>
+              <td><%= job.status %></td>
+              <% if job.attendant_id.present? %>
+                <td><%= Profile.find(job.attendant_id).try(:name) %></td>
+              <% else %>
+                <td></td>
+              <% end %>
+              <td><%= link_to "Edit", edit_job_path(job) %></td>
+              <td><%= link_to "Destroy", job_path(job), method: :delete, data: {confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+    <% if current_user.role == 'Admin' %>
+      <%= submit_tag "Edit Checked" %>
+    <% end %>
+  <% end %>
+  <div class="span8">
+  </div>
+</div>

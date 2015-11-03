@@ -1,0 +1,24 @@
+<table class="table table-bordered table-condensed table-striped">
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Role</th>
+      <th>Job Count</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @users.present? %>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.profile.try(:name), profile_path(user.profile.id) %></td>
+          <td><%= user.role %></td>
+          <td><%= user.jobs.count %></td>
+          <td><%= user.profile.score %>% of <%= user.profile.total %> votes</td>
+          <td><%= link_to "Edit", edit_user_path(user) %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

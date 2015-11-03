@@ -1,4 +1,4 @@
-<header class="navbar navbar-default navbar-fixed-top" role="banner">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -10,10 +10,14 @@
       <a href="/" class="navbar-brand">Home</a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-left">
         <% if user_signed_in? %>
+          <li><%= link_to "Profile", profile_path(current_user.id) %></li>
+          <li><%= link_to "Users", users_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "#{current_user.profile.name} (#{current_user.role})", edit_user_registration_path %></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to "Account", edit_user_registration_path %></li>
         <% else %>
           <li><%= link_to "Register", new_user_registration_path %></li>
           <li><%= link_to "Login", new_user_session_path %></li>
@@ -21,5 +25,5 @@
       </ul>
     </nav>
   </div>
-</header>
+</div>
 

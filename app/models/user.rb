@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   after_create :setup_profile
 
   has_one :profile
-  has_many :jobs
+  has_many :jobs, dependent: :destroy
 
   accepts_nested_attributes_for :jobs
 

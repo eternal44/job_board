@@ -2,15 +2,21 @@
 #
 # Table name: jobs
 #
-#  id         :integer          not null, primary key
-#  title      :string
-#  location   :string
-#  start      :text
-#  end        :text
-#  user_id    :integer
-#  status     :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                    :integer          not null, primary key
+#  subject               :string
+#  location              :string
+#  appointment_date_time :text
+#  user_id               :integer
+#  status                :string
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  attendant_id          :integer
+#  priority              :string
+#  overdue               :boolean          default(FALSE)
+#  number_of_workers     :integer
+#  min_hours             :integer
+#  max_hours             :integer
+#  price_per_worker      :decimal(, )
 #
 
 require 'test_helper'
@@ -25,7 +31,7 @@ class JobTest < ActiveSupport::TestCase
   end
 
   test "employer id should be present" do
-    @valid_job.employer_id = nil
+    @valid_job.user_id = nil
     assert_not @valid_job.valid?
   end
 

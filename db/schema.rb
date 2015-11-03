@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023020909) do
+ActiveRecord::Schema.define(version: 20151102221533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,15 +25,36 @@ ActiveRecord::Schema.define(version: 20151023020909) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "jobs", force: :cascade do |t|
-    t.string   "title"
-    t.string   "location"
-    t.text     "start_time"
-    t.text     "end_time"
-    t.integer  "user_id"
-    t.string   "status"
+  create_table "job_types", force: :cascade do |t|
+    t.string   "job_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "job_types_jobs", id: false, force: :cascade do |t|
+    t.integer "job_type_id", null: false
+    t.integer "job_id",      null: false
+  end
+
+  add_index "job_types_jobs", ["job_id", "job_type_id"], name: "index_job_types_jobs_on_job_id_and_job_type_id", using: :btree
+  add_index "job_types_jobs", ["job_type_id", "job_id"], name: "index_job_types_jobs_on_job_type_id_and_job_id", using: :btree
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "subject"
+    t.string   "location"
+    t.text     "appointment_date_time"
+    t.integer  "user_id"
+    t.string   "status"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "attendant_id"
+    t.string   "priority"
+    t.boolean  "overdue",               default: false
+    t.integer  "number_of_workers"
+    t.integer  "min_hours"
+    t.integer  "max_hours"
+    t.decimal  "price_per_worker"
+    t.string   "job_categories"
   end
 
   add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
@@ -41,8 +62,9 @@ ActiveRecord::Schema.define(version: 20151023020909) do
   create_table "profiles", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "phone_number"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree

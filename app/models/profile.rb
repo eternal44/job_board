@@ -2,11 +2,12 @@
 #
 # Table name: profiles
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  user_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  name         :string
+#  user_id      :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  phone_number :string
 #
 
 class Profile < ActiveRecord::Base
@@ -22,5 +23,9 @@ class Profile < ActiveRecord::Base
     else
       return 0
     end
+  end
+
+  def total
+    self.get_downvotes.size + self.get_upvotes.size
   end
 end

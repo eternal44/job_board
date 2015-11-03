@@ -3,6 +3,7 @@
 <% end %>
 <%= link_to 'Back', :back %>
 <h2><%= @profile.name %></h2>
+<h3>Phone number: <%= number_to_phone(@profile.phone_number) %></h3>
 <h4><%= number_to_percentage(@profile.score, precision: 0) %></h4> <br>
 
 <%= link_to like_profile_path(@profile), method: :put do %>
@@ -20,26 +21,7 @@
 <%= @profile.user.role %></br>
 
 <h3>Job History</h3>
-<table class="table table-bordered table-condensed table-striped">
-  <thead>
-    <tr>
-      <th>Job Title </th>
-      <th>Status</th>
-      <th>Location</th>
-      <th>Start Time</th>
-      <th>End Time</th>
-    </tr>
-  </thead>
-  <% @profile.user.jobs.each do |job| %>
-    <tbody>
-      <td><%= job.title %></td>
-      <td><%= job.status %></td>
-      <td><%= job.location %></td>
-      <td><%= job.start_time %></td>
-      <td><%= job.end_time %></td>
-    </tbody>
-  <% end %>
-</table>
+<%= render partial: "jobs/table_row", locals: {job_variable: @profile.user.jobs} %>
 
 
 <%= render partial: "comments/form", locals: {commentable: @profile} %>

@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-4">
+  <%= search_form_for @q, url: admin_dashboards_path  do |f| %>
+    <%= f.label :status_or_location_cont %>
+    <%= f.search_field :status_or_location_cont, placeholder: "Search jobs", class: "form-control vertical-align: middle", style: "top-padding: 10px; margin-left: 10px"%></br>
+
+    <%= f.label :employer_name_cont %>
+    <%= f.search_field :user_profile_name_cont, placeholder: "Search employers", class: "form-control vertical-align: middle", style: "top-padding: 10px; margin-left: 10px" %></br>
+    <%= f.submit "Search", class: "btn btn-primary", style: "top-padding: 10px; margin-left: 10px" %>
+  <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Unconfirmed Jobs</h3>
+  <%= render partial: "jobs/table_row", locals: {job_variable: @jobs_unconfirmed} %>
+
+  <h3>Confirmed Jobs</h3>
+  <%= render partial: "jobs/table_row", locals: {job_variable: @jobs_confirmed} %>
+
+  <h3>Dispatched Jobs</h3>
+  <%= render partial: "jobs/table_row", locals: {job_variable: @jobs_dispatched} %>
+</div>
