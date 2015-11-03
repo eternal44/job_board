@@ -2,7 +2,7 @@
   <% if current_user.role == 'Admin' || current_user.role == 'Attendant' %>
     <div class="row">
       <%= form.label :status %><br>
-      <%= form.select :status, [['UNCONFIRMED'],['CONFIRMED'],['DISPATCHED']] %>
+      <%= form.select :status, [['Unconfirmed'],['Confirmed'],['Dispatched']] %>
     </div><br><!-- Job Status -->
   <% end %>
 
@@ -72,13 +72,6 @@ $(function () {
       <div class="form-group col-sm-6">
         <%= form.label :overdue %>
         <%= form.check_box :overdue %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="form-group col-sm-6">
-        <%= form.label :number_of_workers %>
-        <%= form.number_field :number_of_workers %>
       </div>
     </div>
 
