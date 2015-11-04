@@ -1,6 +1,5 @@
-Denarus
-=======
-**beta**
+Denarius **beta**
+========
 
 An open source job board for day laborers
 
