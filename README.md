@@ -1,17 +1,16 @@
-== Denarus
-**beta**
+Denarius **beta**
+========
 
 An open source job board for day laborers
 
-## TL;DR
+## Summary
 Think GlassDoor meets LinkedIn meets Yelp for day labor programs.
 
-Denarius connects day laborers with potential employers with some added
-features:
+Denarius allows day laborers to connect with employers
 - Employers can request well rated workers
 - Day laborers can more easily access available jobs
 - Admin(s) can monitor activities to make sure all is as it
-  should be.
+  should be
 
 ## Change Log
 See CHANGELOG.md for more details & features we're working on.
@@ -56,4 +55,5 @@ and well working solution for our partner organizations.
 Please do your best to follow this [style
 guide](https://github.com/bbatsov/rails-style-guide).
 
+## License
 Copyright (c) 2015 Code for America | MIT License
