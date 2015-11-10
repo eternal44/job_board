@@ -1,8 +1,7 @@
 <div class="row-fluid">
-  <% if current_user.role == 'Employer' || current_user.role == 'Admin' %>
+  <% if policy(Job).new? %>
     <%= link_to 'New job', new_job_path %></br>
   <% end %>
-  </br>
 
   <% if current_user.role == 'Admin' %>
   <button type="button" id="check_all">
@@ -37,7 +36,7 @@ $('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
                 <td><%= check_box_tag "job_ids[]", job.id %></td>
               <% end %>
               <td><%= job.subject %>
-              <td><%= link_to job.job_types.map(&:job_type).sort.join(", "), job %></td>
+              <td><%= job.job_types.map(&:job_type).sort.join(", ") %></td>
               <td><%= job.user.profile.try(:name)%></td>
               <td><%= job.location %>
               <td><%= job.appointment_date_time %>
@@ -47,8 +46,9 @@ $('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
               <% else %>
                 <td></td>
               <% end %>
-              <td><%= link_to "Edit", edit_job_path(job) %></td>
-              <td><%= link_to "Destroy", job_path(job), method: :delete, data: {confirm: 'Are you sure?' } %></td>
+              <td><%= link_to "Show", job_path(job) if policy(job).show? %></td>
+              <td><%= link_to "Edit", edit_job_path(job) if policy(job).edit? %></td>
+              <td><%= link_to "Destroy", job_path(job), method: :delete, data: {confirm: 'Are you sure?' } if policy(job).destroy? %></td>
             </tr>
           <% end %>
       </tbody>
