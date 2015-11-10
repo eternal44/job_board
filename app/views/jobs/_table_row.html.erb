@@ -46,9 +46,9 @@ $('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
               <% else %>
                 <td></td>
               <% end %>
-              <td><%= link_to "Show", job_path(job) if policy(job).show? %></td>
-              <td><%= link_to "Edit", edit_job_path(job) if policy(job).edit? %></td>
-              <td><%= link_to "Destroy", job_path(job), method: :delete, data: {confirm: 'Are you sure?' } if policy(job).destroy? %></td>
+              <td><%= link_to '<i class="fa fa-search"></i>'.html_safe, job_path(job) if policy(job).show? %></td>
+              <td><%= link_to '<i class="fa fa-scissors"></i>'.html_safe, edit_job_path(job) if policy(job).edit? %></td>
+              <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, job_path(job), method: :delete, data: {confirm: 'Are you sure?' } if policy(job).destroy? %></td>
             </tr>
           <% end %>
       </tbody>
