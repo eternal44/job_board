@@ -5,24 +5,24 @@ class JobPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    user.admin? || user.employer? || user.employer?
   end
 
   def show?
-    user.present? && user == post.user
+    user.present? && user == job.user || user.admin? || user.attendant?
   end
 
   def update?
-    user.present? && user == post.user
+    user.present? && user == job.user || user.admin?
   end
 
   def destroy?
-    true
+    user.admin? || user == job.user
   end
 
   private
 
-  def post
+  def job
     record
   end
 end
