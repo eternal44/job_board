@@ -4,6 +4,7 @@ class JobsControllerTest < ActionController::TestCase
   def setup
     @valid_job = jobs(:one)
     sign_in users(:employer)
+    @request.env['HTTP_REFERER'] = 'http://localhost:3000/jobs'
   end
 
   test 'should show job' do

@@ -34,4 +34,21 @@ class User < ActiveRecord::Base
   def setup_profile
     Profile.create(user_id: self.id)
   end
+
+  def admin?
+    role == 'Admin'
+  end
+
+  def attendant?
+    role == 'Attendant'
+  end
+
+  def employer?
+    role == 'Employer'
+  end
+
+  def worker?
+    role == 'Worker'
+  end
+
 end
