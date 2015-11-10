@@ -13,7 +13,7 @@ class JobPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && user == job.user || user.admin?
+    user.present? && user == job.user || user.admin? || user.attendant?
   end
 
   def destroy?
