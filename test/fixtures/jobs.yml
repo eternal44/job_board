@@ -24,14 +24,12 @@
 
 one:
   location: 'MyString'
-  first_start_time_choice: 2015-10-15 14:58:38
-  second_start_time_choice: 2015-10-15 14:58:38
+  appointment_date_time: 2015-10-15 14:58:38
   user: employer
-  status: 'Created'
+  status: 'Unconfirmed'
 
 two:
   location: 'Second Location'
-  first_start_time_choice: 2015-10-15 14:58:38
-  second_start_time_choice: 2015-10-15 14:58:38
+  appointment_date_time: 2015-10-15 14:58:38
   user: admin
-  status: 'Created'
+  status: 'Unconfirmed'
