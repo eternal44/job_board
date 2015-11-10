@@ -11,33 +11,13 @@
   </div>
 </div>
 
-<div class="row-fluid">
-  <% if policy(Job).new? %>
-    <%= link_to 'New job', new_job_path %></br>
-  <% end %>
-
-  <% if current_user.role == 'Admin' %>
-  <button type="button" id="check_all">
-    Check / Uncheck All
-  </button>
-  <script type='text/javascript'>
-$('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
-  </script>
-<% end %>
-
-<div class='container'>
 <div class="row">
   <h3>Unconfirmed Jobs</h3>
   <%= render partial: "jobs/table_row", locals: {job_variable: @jobs_unconfirmed} %>
-</div>
 
-<div class="row">
   <h3>Confirmed Jobs</h3>
   <%= render partial: "jobs/table_row", locals: {job_variable: @jobs_confirmed} %>
-</div>
 
-<div class="row">
   <h3>Dispatched Jobs</h3>
   <%= render partial: "jobs/table_row", locals: {job_variable: @jobs_dispatched} %>
-</div>
 </div>

@@ -17,7 +17,6 @@
 #  min_hours             :integer
 #  max_hours             :integer
 #  price_per_worker      :decimal(, )
-#  job_categories        :string
 #
 
 require 'test_helper'

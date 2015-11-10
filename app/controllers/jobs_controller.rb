@@ -6,7 +6,6 @@ class JobsController < ApplicationController
     if current_user.role == 'Employer' || current_user.role == 'Worker'
       @q = current_user.jobs.ransack(params[:q])
       @jobs = @q.result(distinct: true).includes(:user)
-      authorize @jobs
     else
       redirect_to admin_dashboards_path
     end
@@ -83,6 +82,5 @@ class JobsController < ApplicationController
 
   def set_job
     @job = Job.find(params[:id])
-    authorize @job
   end
 end

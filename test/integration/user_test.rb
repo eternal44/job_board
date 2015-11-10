@@ -25,7 +25,8 @@ class UsersTest < ActionDispatch::IntegrationTest
     assert page.has_content?('New Job')
     check 'cleaning'
     fill_in('Location', with: '1234 Main st')
-    fill_in('Appointment date time', with: '10/01/2015 1:00 PM')
+    fill_in('First start time choice', with: '10/01/2015 1:00 PM')
+    fill_in('Second start time choice', with: '10/17/2015 12:00 AM')
     find_button('Create Job')
     click_on 'Create Job'
     assert page.has_content?('cleaning'), 'job not created'

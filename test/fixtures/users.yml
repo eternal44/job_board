@@ -29,16 +29,6 @@ admin:
   encrypted_password: <%= User.new.send(:password_digest, 'password1234') %>
   role: "Admin"
 
-worker:
-  email: worker@gmail.com
-  encrypted_password: <%= User.new.send(:password_digest, 'password1234') %>
-  role: "Worker"
-
-attendant:
-  email: attendant@gmail.com
-  encrypted_password: <%= User.new.send(:password_digest, 'password1234') %>
-  role: "Attendant"
-
 employer:
   email: employer@gmail.com
   encrypted_password: <%= User.new.send(:password_digest, 'password1234') %>

@@ -17,19 +17,20 @@
 #  min_hours             :integer
 #  max_hours             :integer
 #  price_per_worker      :decimal(, )
-#  job_categories        :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
   location: 'MyString'
-  appointment_date_time: 2015-10-15 14:58:38
+  first_start_time_choice: 2015-10-15 14:58:38
+  second_start_time_choice: 2015-10-15 14:58:38
   user: employer
-  status: 'Unconfirmed'
+  status: 'Created'
 
 two:
   location: 'Second Location'
-  appointment_date_time: 2015-10-15 14:58:38
+  first_start_time_choice: 2015-10-15 14:58:38
+  second_start_time_choice: 2015-10-15 14:58:38
   user: admin
-  status: 'Unconfirmed'
+  status: 'Created'
