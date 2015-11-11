@@ -13,7 +13,7 @@
 
 <div class="row-fluid">
   <% if policy(Job).new? %>
-    <%= link_to 'New job', new_job_path %></br>
+    <h4><%= link_to 'New job', new_job_path %></h4></br>
   <% end %>
 
   <% if current_user.role == 'Admin' %>

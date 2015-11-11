@@ -1,11 +1,11 @@
 class JobPolicy < ApplicationPolicy
 
   def index?
-    true
+    user.present?
   end
 
   def create?
-    user.admin? || user.employer? || user.employer?
+    user.admin? || user.employer?
   end
 
   def show?

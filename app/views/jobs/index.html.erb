@@ -17,6 +17,10 @@
 
 <p id="notice"><%= notice %></p>
 
+<% if policy(:job).new? %>
+  <h4><%= link_to 'New Job', new_job_path %></h4>
+<% end %>
+
 <%= render partial: "jobs/table_row", locals: {job_variable: @jobs} %>
 
 
