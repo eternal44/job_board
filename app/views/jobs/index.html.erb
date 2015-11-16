@@ -1,16 +1,24 @@
 <div class='row'>
-<h1>Listing Jobs</h1>
+  <h1>Listing Jobs</h1>
 </div>
 
 <div class='row'>
   <div class="col-md-4">
     <%= search_form_for @q, url: jobs_path do |f| %>
       <%= f.label :job_subject_or_location_cont %></br>
-      <%= f.search_field :subject_or_location_cont, placeholder: "Search jobs", class: "form-control vertical-align: middle", style: "top-padding: 10px; margin-left: 10px"%></br>
-
+      <%= f.search_field :subject_or_location_cont,
+        placeholder: "Search jobs",
+        class: "form-control vertical-align: middle",
+        style: "top-padding: 10px; margin-left: 10px"%>
+      </br>
       <%= f.label :employer_name_cont %></br>
-      <%= f.search_field :user_profile_name_cont, placeholder: "Search employers", class: "form-control vertical-align: middle", style: "top-padding: 10px; margin-left: 10px" %></br>
-      <%= f.submit "Search", class: "btn btn-primary", style: "top-padding: 10px; margin-left: 10px" %>
+      <%= f.search_field :user_profile_name_cont,
+        placeholder: "Search employers",
+        class: "form-control vertical-align: middle",
+        style: "top-padding: 10px; margin-left: 10px" %>
+      </br>
+      <%= f.submit "Search", class: "btn btn-primary",
+        style: "top-padding: 10px; margin-left: 10px" %>
     <% end %>
   </div>
 </div>

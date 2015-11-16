@@ -37,10 +37,20 @@ body {
 
 /* Custom Button Styles */
 
+.search-field {
+  top-padding: 10px;
+  margin-left: 10px;
+}
+
 .btn-dark {
     border-radius: 0;
     color: #fff;
     background-color: rgba(0,0,0,0.4);
+}
+
+.admin-search {
+  top-padding: 10px;
+  margin-left: 10px;
 }
 
 .btn-dark:hover,

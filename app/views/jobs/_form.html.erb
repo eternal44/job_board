@@ -6,104 +6,97 @@
     </div><br><!-- Job Status -->
   <% end %>
 
-  <%# <ul class="nav navbar-nav"> %>
-    <% if @job.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job
-          <ul>
-            <% @job.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-      </div>
-    <% end %><!-- Job error messages -->
-    <div class="row">
-      <div class='form-group col-sm-6'>
-        <%= form.label :subject %><br>
-        <%= form.text_field :subject %><br>
-      </div>
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job
+        <ul>
+          <% @job.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
     </div>
+  <% end %><!-- Job error messages -->
+  <div class="row">
+    <div class='form-group col-sm-6'>
+      <%= form.label :subject %><br>
+      <%= form.text_field :subject %><br>
+    </div>
+  </div>
 
-    <div class="row">
-      <div class='form-group col-sm-6'>
-        <%= form.label :job_categories %>
-        <%= form.collection_check_boxes :job_type_ids, JobType.all, :id, :job_type do |b| %>
-          <div class="collection-check-box">
-            <%= b.check_box %>
-            <%= b.label %>
-          </div>
-        <% end %>
-      </div>
-    </div><!-- Job Type -->
-    <div class="row">
-      <div class='form-group col-sm-6'>
-        <%= form.label :location %>
-        <%= form.text_field(:location, class: 'form-control', size: 57) %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="form-group col-sm-6">
-        <div class='input-group datetimepicker9'>
-          <%= form.label :appointment_date_time %><br>
-          <%= form.text_field(:appointment_date_time, class: 'form-control input-group ') %>
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar">
-            </span>
-          </span>
+  <div class="row">
+    <div class='form-group col-sm-6'>
+      <%= form.label :job_categories %>
+      <%= form.collection_check_boxes :job_type_ids, JobType.all, :id, :job_type do |b| %>
+        <div class="collection-check-box">
+          <%= b.check_box %>
+          <%= b.label %>
         </div>
-        <script type="text/javascript">
-$(function () {
-  $('.datetimepicker9').datetimepicker({
-    viewMode: 'years'
-  });
-});
-        </script>
-      </div>
-    </div><!-- appointment_date_time -->
-
-    <div class="row">
-      <div class="form-group col-sm-6">
-        <%= form.label :priority %>
-        <%= form.select :priority, [['URGENT'],['NOT URGENT']] %>
-      </div>
+      <% end %>
     </div>
-
-    <div class="row">
-      <div class="form-group col-sm-6">
-        <%= form.label :overdue %>
-        <%= form.check_box :overdue %>
+  </div><!-- Job Type -->
+  <div class="row">
+    <div class='form-group col-sm-6'>
+      <%= form.label :location %>
+      <%= form.text_field(:location, class: 'form-control', size: 57) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <div class='input-group datetimepicker9'>
+        <%= form.label :appointment_date_time %><br>
+        <%= form.text_field(:appointment_date_time, class: 'form-control input-group ') %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar">
+          </span>
+        </span>
+        <%= javascript_include_tag "datePicker" %>
       </div>
     </div>
+  </div><!-- appointment_date_time -->
 
-    <div class="row">
-      <div class="form-group col-sm-6">
-        <%= form.label :min_hours %>
-        <%= form.number_field :min_hours %>
-      </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label :priority %>
+      <%= form.select :priority, [['URGENT'],['NOT URGENT']] %>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="form-group col-sm-6">
-        <%= form.label :max_hours %>
-        <%= form.number_field :max_hours %>
-      </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label :overdue %>
+      <%= form.check_box :overdue %>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="form-group col-sm-6">
-        <%= form.label :number_of_workers %>
-        <%= form.number_field :number_of_workers %>
-      </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label :min_hours %>
+      <%= form.number_field :min_hours %>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="form-group col-sm-6">
-        <%= form.label :price_per_worker %>
-        <%= form.number_field :price_per_worker %>
-      </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label :max_hours %>
+      <%= form.number_field :max_hours %>
     </div>
+  </div>
 
-    <div class='action'>
-      <%= form.submit class: 'btn btn-primary' %>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label :number_of_workers %>
+      <%= form.number_field :number_of_workers %>
     </div>
-  <% end %>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= form.label :price_per_worker %>
+      <%= form.number_field :price_per_worker %>
+    </div>
+  </div>
+
+  <div class='action'>
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
