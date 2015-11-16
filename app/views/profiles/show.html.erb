@@ -22,8 +22,6 @@
 
 <h3>Job History</h3>
 <%= render partial: "jobs/table_row", locals: {job_variable: @profile.user.jobs} %>
-
-
 <%= render partial: "comments/form", locals: {commentable: @profile} %>
 <%= render partial: "comments/comments", locals: {commentable: @profile} %>
 

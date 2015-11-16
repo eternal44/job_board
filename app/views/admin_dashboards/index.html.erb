@@ -2,11 +2,14 @@
   <div class="col-md-4">
   <%= search_form_for @q, url: admin_dashboards_path  do |f| %>
     <%= f.label :status_or_location_cont %>
-    <%= f.search_field :status_or_location_cont, placeholder: "Search jobs", class: "form-control vertical-align: middle", style: "top-padding: 10px; margin-left: 10px"%></br>
-
+    <%= f.search_field :status_or_location_cont,
+      placeholder: "Search jobs",
+      class: "search-field form-control vertical-align: middle" %></br>
     <%= f.label :employer_name_cont %>
-    <%= f.search_field :user_profile_name_cont, placeholder: "Search employers", class: "form-control vertical-align: middle", style: "top-padding: 10px; margin-left: 10px" %></br>
-    <%= f.submit "Search", class: "btn btn-primary", style: "top-padding: 10px; margin-left: 10px" %>
+    <%= f.search_field :user_profile_name_cont,
+      placeholder: "Search employers",
+      class: "search-field form-control vertical-align: middle" %></br>
+    <%= f.submit "Search", class: "btn btn-primary admin-search" %>
   <% end %>
   </div>
 </div>
@@ -20,9 +23,7 @@
   <button type="button" id="check_all">
     Check / Uncheck All
   </button>
-  <script type='text/javascript'>
-$('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
-  </script>
+  <%= javascript_include_tag "checkAll" %>
 <% end %>
 
 <div class='container'>
